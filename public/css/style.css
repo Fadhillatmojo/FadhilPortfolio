@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;	}
+a{
+    color: black !important;
+}
+
+.container-native {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+}
+
+/* HEADER SECTION */
+
+.header_section {
+    background-color: white;
+    /* width: 100%; */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    z-index: 3;
+}
+
+nav{
+    border: 1px solid black;
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+nav ul.nav_links {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 0px 10px 10px 10px;
+    cursor: pointer;
+}
+
+nav ul li a {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    background-color: black;
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: -1px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a.active::after {
+    width: 100%;
+}
+
+.logo {
+    font-weight: 600;
+    margin-left: 11.5px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.1s ease-in-out;
+}
+
+.logo:hover{
+    color:#818181;
+}
+
+.btn_chat {
+    color: black;
+    border: 1px solid black;
+    font-weight: 600;
+    padding: 14.5px 19.5px;
+    border-radius: 10px;
+    background-image: url("../image/CTA.png");
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: color 800ms ease-in-out;
+    transition: background-image 500ms ease-in-out;
+}
+
+.btn_chat:hover {
+    color: #fff;
+    background-image: url("../image/CTA2.png");
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* menu toggle */
+.menu_toggle{
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    position: relative;
+    margin-right: 3%;
+}
+
+.menu_toggle span{
+    display: block;
+    width: 28px;
+    height: 3px;
+    border-radius: 3px;
+    background-color: #000;
+    transition: all 500ms;
+}
+
+.menu_toggle input{
+    position: absolute;
+    width: 40px;
+    height: 28px;
+    left: -6px;
+    top: -3px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.menu_toggle span:nth-child(2){
+    transform-origin: 0 0;
+}
+
+.menu_toggle span:last-child{
+    transform-origin: 0 0;
+}
+
+.menu_toggle input:checked ~ span:nth-child(2){
+    transform: rotate(45deg) translate(-1px,-2px);
+}
+
+.menu_toggle input:checked ~ span:nth-child(3){
+    opacity: 0;
+    transform: scale(0);
+}
+
+.menu_toggle input:checked ~ span:last-child{
+    transform: rotate(-45deg) ;
+}
+
+/* END HEADER SECTION */
+
+/* jumbotron section */
+.jumbotron-img{
+    max-width: 75% !important;
+}
+
+/* START JUMBOTRON SECTION */
+
+.jumbotron {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.jumbotron h2 {
+    font-size: 35px;
+    background-color: #000A3E;
+    font-weight: bold;
+    /* Create the gradient. */
+    background-image: linear-gradient(90deg, #000A3E, #0AF1FF, #94FF6B);
+    /* Set the background size and repeat properties. */
+    background-size: 100%;
+    background-repeat: repeat;
+    /* Use the text as a mask for the background. */
+    /* This will show the gradient as a text color rather than element bg. */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+
+div.jumbotron p {
+    font-size: 20px;
+    margin-top: 5px;
+}
+/* END JUMBOTRON SECTION */
+
+.btn_footer{
+    margin-top: 50px;
+    display: inline-block;
+}
+.btn_footer button{
+    cursor: pointer;
+}
