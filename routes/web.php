@@ -19,10 +19,14 @@ Route::get('/', function () {
 });
 
 Route::controller(UserController::class)->group(function() {
-    Route::get('/register', 'register')->name('register');
-    Route::post('/store', 'store')->name('store');
-    Route::get('/login', 'login')->name('login');
-    Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::get('/dashboard', 'dashboard')->name('dashboard');
-    Route::post('/logout', 'logout')->name('logout');
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/dashboard', 'dashboard')->middleware(['ensure-loged-out'])->name('dashboard');
+        Route::post('/logout', 'logout')->name('logout');
+    });
+    Route::middleware(['guest'])->group(function () {
+        Route::get('/register', 'register')->name('register');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/login', 'login')->name('login');
+        Route::post('/authenticate', 'authenticate')->name('authenticate');
+    });
 });

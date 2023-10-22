@@ -13,7 +13,7 @@
 					<a class="nav-link" aria-current="page" href="#portfolios">PORTFOLIOS</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#service">SERVICE</a>
+					<a class="nav-link" href="#services">SERVICE</a>
 				</li>
 			</ul>
 			<form class="d-flex" action="{{ route('logout') }}" method="POST">

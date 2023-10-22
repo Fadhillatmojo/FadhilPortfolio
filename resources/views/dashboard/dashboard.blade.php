@@ -3,7 +3,7 @@
 	Dashboard
 @endsection
 @section('container')
-	// alert untuk menunjukkan bahwa berhasil login
+	{{--  alert untuk menunjukkan bahwa berhasil login  --}}
 	@if ($message = Session::get('success'))
 		<script>
 			alert('{{ $message }}')
