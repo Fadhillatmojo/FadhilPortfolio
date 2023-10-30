@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Jobs\SendEmailJob;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -32,16 +33,22 @@ class UserController extends Controller
             'password' => 'required|min:8|confirmed'
         ]);
 
+        
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
-
+        $data = [
+            'name'=> $request->name,
+            'email'=> $request->email
+        ];
+        
+        dispatch(new SendEmailJob($data));
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
-        return redirect()->route('dashboard')->withSuccess('Kamu berhasil register dan telah login!');
+        return redirect()->route('login')->withSuccess('Kamu berhasil register');
     }
 
     public function login()
