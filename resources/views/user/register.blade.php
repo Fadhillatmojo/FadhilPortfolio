@@ -10,7 +10,7 @@
 
 {{--  section container  --}}
 @section('container')
-	<form method="POST" action="{{ route('store') }}">
+	<form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
 		@csrf
 		<div class="mb-3">
 			<label for="name" class="form-label">Name</label>
@@ -35,9 +35,16 @@
 				<span class="text-danger">{{ $errors->first('password') }}</span>
 			@endif
 		</div>
-		<div class="mb-5">
-			<label for="password_confirmation" class="form-label">Password</label>
+		<div class="mb-3">
+			<label for="password_confirmation" class="form-label">Password Confirm</label>
 			<input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+		</div>
+		<div class="mb-5">
+			<label for="photo" class="form-label">Photo</label>
+			<input type="file" class="form-control" id="" name="photo" value="">
+			@if ($errors->has('photo'))
+				<span class="text-danger">{{ $errors->first('photo') }}</span>
+			@endif
 		</div>
 		<div class="d-flex flex-column w-100 justify-content-evenly mt-4 align-items-center">
 			<button type="submit" class="btn_chat" value="register">Register</button>

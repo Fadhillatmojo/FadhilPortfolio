@@ -4,6 +4,11 @@
 @endsection
 @section('container')
 	{{--  alert untuk menunjukkan bahwa berhasil login  --}}
+	@if ($message = Session::get('message'))
+		<script>
+			alert('{{ $message }}')
+		</script>
+	@endif
 	@if ($message = Session::get('success'))
 		<script>
 			alert('{{ $message }}')
