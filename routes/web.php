@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,10 @@ Route::controller(UserController::class)->group(function() {
         // ini rute resize
         Route::get('/user/resize/{userid}', 'resize')->name('user.resize');
         Route::put('/user/resize/{userid}', 'resizePost')->name('user.resizePost');
+
+        // ini rute gallery 
+        Route::resource('gallery', GalleryController::class);
+
     });
     Route::middleware(['guest'])->group(function () {
         Route::get('/register', 'register')->name('register');

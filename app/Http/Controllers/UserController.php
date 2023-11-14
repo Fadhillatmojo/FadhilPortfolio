@@ -81,7 +81,6 @@ class UserController extends Controller
             $path = $request->file('photo')->storeAs('photos', $filenameSimpan);
 
             //delete old image
-            // dd(public_path().''.$user->photo);
             Storage::delete('photos/'.$user->photo);
 
             //update post with new image

@@ -21,6 +21,7 @@
 				<button class="btn_chat" type="submit">LOGOUT</button>
 			</form>
 			<a class="btn_chat mx-3" href="{{ route('user.index') }}">Cek user</a>
+			<a class="btn_chat" href="{{ route('gallery.index') }}">Gallery</a>
 		</div>
 	</div>
 </nav>
