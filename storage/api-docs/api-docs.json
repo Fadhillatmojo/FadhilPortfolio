@@ -1,0 +1,74 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Gallery Portfolio Fadhil (Get dan Post)",
+        "description": "Bisa Menambahkan gallery/postingan dan juga bisa menampilkannya",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "fadhillatmojo@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/api/gallery": {
+            "get": {
+                "tags": [
+                    "Get Gallery"
+                ],
+                "summary": "Menampilkan data Gallery",
+                "description": "Menampilkan data Gallery",
+                "operationId": "gallery",
+                "responses": {
+                    "default": {
+                        "description": "Success Menampilkan Data"
+                    }
+                }
+            }
+        },
+        "/api/gallery-store": {
+            "post": {
+                "tags": [
+                    "Store Gallery"
+                ],
+                "summary": "Add Gallery",
+                "operationId": "23c9c1c809270b3762ba50b1704d0f0a",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "description": "Judul gallery",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Deskripsi Gallery",
+                                        "type": "string"
+                                    },
+                                    "picture": {
+                                        "description": "Image file Gallery",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success menambahkan data"
+                    },
+                    "404": {
+                        "description": "Error"
+                    }
+                }
+            }
+        }
+    }
+}

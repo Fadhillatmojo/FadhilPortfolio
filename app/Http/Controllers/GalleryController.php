@@ -9,6 +9,21 @@ use Illuminate\Support\Facades\Http;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
+/**
+* @OA\Info(
+*   description="Bisa Menambahkan gallery/postingan dan juga bisa menampilkannya",
+*   version="0.0.1",
+*   title="API Gallery Portfolio Fadhil (Get dan Post)",
+*   termsOfService="http://swagger.io/terms/",
+*   @OA\Contact(
+*       email="fadhillatmojo@gmail.com"
+*   ),
+*   @OA\License(
+*       name="Apache 2.0",
+*       url="http://www.apache.org/licenses/LICENSE-2.0.html"
+*   )
+* )
+*/
 class GalleryController extends Controller
 {
     /**
@@ -104,7 +119,7 @@ class GalleryController extends Controller
             // $post->save();
             // return redirect('gallery')->with('success', 'Berhasil menambahkan data baru');
 
-            
+
         }  catch(Exception $e){
             return redirect('dashboard')->with('Fail', 'Gagal menambahkan data baru');
         }
@@ -189,6 +204,20 @@ class GalleryController extends Controller
     }
 
     // api endpoint untuk get gallery
+
+    /**
+     * @OA\Get(
+     *      path="/api/gallery",
+     *      tags={"Get Gallery"},
+     *      summary="Menampilkan data Gallery",
+     *      description="Menampilkan data Gallery",
+     *      operationId="gallery",
+     *      @OA\Response(
+     *          response="default",
+     *          description="Success Menampilkan Data"
+     *      )
+     * )
+    */
     public function gallery()
     { 
         try{
@@ -205,6 +234,44 @@ class GalleryController extends Controller
     }
 
     // api endpoint untuk post gallery
+    /**
+     * @OA\Post(
+     *     path="/api/gallery-store",
+     *     summary="Add Gallery",
+     *     tags={"Store Gallery"},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="title",
+     *                     type="string",
+     *                     description="Judul gallery",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="description",
+     *                     type="string",
+     *                     description="Deskripsi Gallery",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="picture",
+     *                     type="string",
+     *                     format="binary",
+     *                     description="Image file Gallery",
+     *                 ),
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Success menambahkan data",
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Error",
+     *     )
+     * )
+     */
     public function addGallery(Request $request){
         try{
             $this->validate($request, [
